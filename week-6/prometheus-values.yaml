@@ -1,0 +1,23 @@
+prometheus:
+  prometheusSpec:
+    retention: 6h
+    resources:
+      requests:
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+
+  service:
+    type: ClusterIP
+
+  ingress:
+    enabled: false
+
+  additionalServiceMonitors: []
+
+grafana:
+  persistence:
+    enabled: false
+
+alertmanager:
+  enabled: false
