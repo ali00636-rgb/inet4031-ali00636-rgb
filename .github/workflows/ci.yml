@@ -1,0 +1,30 @@
+name: OpenTofu Checks
+
+on:
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  tofu:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: week-5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Install OpenTofu
+        uses: opentofu/setup-opentofu@9d84900f3238fab8cd84ce47d658d25dd008be2f
+
+      - name: Check formatting
+        run: tofu fmt -check
+
+      - name: Initialize
+        run: tofu init -backend=false
+
+      - name: Validate
+        run: tofu validate
