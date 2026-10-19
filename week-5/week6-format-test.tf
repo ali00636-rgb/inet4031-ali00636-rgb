@@ -1,3 +1,3 @@
 locals {
-  week6_test    =    "format-check"
+  week6_test = "format-check"
 }
